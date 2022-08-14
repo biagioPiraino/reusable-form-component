@@ -56,7 +56,7 @@ class App extends Component {
         },
         {
           type:'checkbox',
-          label:'Sign up to our newletter',
+          label:'Sign up to our newsletter!',
           name:'newsletterFlag',
           id:'newsletterFlag',
           checked:this.state.formInfo.newsletterFlag
