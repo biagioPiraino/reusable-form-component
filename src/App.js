@@ -14,12 +14,17 @@ class App extends Component {
         newsletterFlag: false
       }
     };
+    this._validator = new Validator();
     this.handleFormInputChanges = this.handleFormInputChanges.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleFormInputChanges(event) {
-    const {name,value,type,checked} = event.target; 
+    const {name,value,type,checked} = event.target;
+    
+    // TODO: add password generic validation here for password
+    // TODO: display alert in case validation failed 
+
     this.setState({
       formInfo: {
         ...this.state.formInfo,
@@ -31,9 +36,8 @@ class App extends Component {
     event.preventDefault();
 
     // Validation
-    const validator = new Validator();
     const {password, confirmPassword} = this.state.formInfo; 
-    const result = validator.validatePassword(password, confirmPassword);
+    const result = this._validator.validatePassword(password, confirmPassword);
     
     console.log(this.state.formInfo);
     console.log(result);
