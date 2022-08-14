@@ -12,6 +12,7 @@ class App extends Component {
       }
     };
     this.handleFormInputChanges = this.handleFormInputChanges.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleFormInputChanges(event) {
@@ -20,6 +21,11 @@ class App extends Component {
         ...this.state.formInfo,
         [event.target.name]: event.target.value}
     });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log(this.state.formInfo);
   }
 
   render (){
@@ -48,6 +54,7 @@ class App extends Component {
           inputs={formInputs}
           onInputChange={this.handleFormInputChanges}
           buttonLabel="Submit"
+          handleSubmit={this.handleSubmit}
         />
       </div>
     );

@@ -23,7 +23,7 @@ class Form extends Component {
     );
 
     return (
-      <form className='form--main'>
+      <form onSubmit={this.props.handleSubmit} className='form--main'>
         {inputToDispay}
         <button className='form--button'>{this.props.buttonLabel}</button>
       </form>
