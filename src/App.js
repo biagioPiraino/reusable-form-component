@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Validator from './component/Validator'
 import Form from './component/Form'
 
 class App extends Component {
@@ -10,7 +11,7 @@ class App extends Component {
         email: '',
         password: '',
         confirmPassword: '',
-        newsletterFlag: true
+        newsletterFlag: false
       }
     };
     this.handleFormInputChanges = this.handleFormInputChanges.bind(this);
@@ -28,7 +29,14 @@ class App extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+
+    // Validation
+    const validator = new Validator();
+    const {password, confirmPassword} = this.state.formInfo; 
+    const result = validator.validatePassword(password, confirmPassword);
+    
     console.log(this.state.formInfo);
+    console.log(result);
   }
 
   render (){
