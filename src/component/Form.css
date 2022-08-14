@@ -1,0 +1,40 @@
+.form--main {
+   display: grid;
+   max-width: 250px;
+   grid-row-gap: 15px;
+   padding: 15px;
+ }
+ 
+ .form--input {
+   font-family: 'Poppins';
+   font-size: 10px;
+   border-radius: 5px;
+   border:1px solid lightgrey;
+   height: 25px;
+   text-indent: 5px;
+ }
+ 
+ .form--input:focus {
+   outline: none !important;
+   box-shadow: 0 0 5px grey;
+   transition-duration: 0.2s;
+   font-size: 12px;
+ }
+ 
+ .form--button { 
+   cursor: pointer;
+   height: 30px;
+   font-family: 'Poppins';
+   border-radius: 5px;
+   border:none;
+   font-size: 10px;
+   background-color: lightgrey;
+ }
+ 
+ .form--button:focus, 
+ .form--button:hover {
+   outline: none !important;
+   box-shadow: 0 0 5px grey;
+   transition-duration: 0.1s;
+   font-size: 12px;
+ }
