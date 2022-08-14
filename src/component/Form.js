@@ -9,17 +9,39 @@ class Form extends Component {
 
   render() {
     const inputToDispay = this.props.inputs.map(
-      x =>
-      <React.Fragment>
-        <input
-          key={x.name}
-          className='form--input'
-          type={x.type}
-          name={x.name}
-          placeholder={x.placeholder}
-          onChange={this.props.onInputChange}
-        />
-      </React.Fragment>
+      x => {
+        if (x.type === 'checkbox') {
+          return (
+            <React.Fragment>
+              <section className='form--checkbox'>
+                <input
+                  id={x.id}
+                  key={x.name}
+                  type={x.type}
+                  name={x.name}
+                  onChange={this.props.onInputChange}
+                  checked={x.checked}
+                />
+                <label htmlFor={x.id}>{x.label}</label>
+            </section>
+          </React.Fragment>
+          )
+        } 
+        else {
+          return (
+          <React.Fragment>
+            <input
+              key={x.name}
+              className='form--input'
+              type={x.type}
+              name={x.name}
+              placeholder={x.placeholder}
+              onChange={this.props.onInputChange}
+            />
+          </React.Fragment>
+          )       
+        }
+      }
     );
 
     return (

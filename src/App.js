@@ -8,7 +8,9 @@ class App extends Component {
       formInfo: {
         userName: '',
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: '',
+        newsletterFlag: true
       }
     };
     this.handleFormInputChanges = this.handleFormInputChanges.bind(this);
@@ -16,10 +18,11 @@ class App extends Component {
   }
 
   handleFormInputChanges(event) {
+    const {name,value,type,checked} = event.target; 
     this.setState({
       formInfo: {
         ...this.state.formInfo,
-        [event.target.name]: event.target.value}
+        [name]: type === 'checkbox' ? checked : value}
     });
   }
 
@@ -45,6 +48,18 @@ class App extends Component {
           type:'password',
           placeholder:'Password',
           name:'password'
+        },
+        {
+          type:'password',
+          placeholder:'Confirm Password',
+          name:'confirmPassword'
+        },
+        {
+          type:'checkbox',
+          label:'Sign up to our newletter',
+          name:'newsletterFlag',
+          id:'newsletterFlag',
+          checked:this.state.formInfo.newsletterFlag
         }
     ] // Specyfing Form Component's props
 
