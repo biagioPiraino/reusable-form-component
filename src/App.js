@@ -12,6 +12,11 @@ class App extends Component {
         password: '',
         confirmPassword: '',
         newsletterFlag: false
+      },
+      formValidationInfo: {
+        email: {result: true, errorMessage: ''},
+        password: {result: true, errorMessage: ''},
+        confirmPassword: {result: true, errorMessage: ''}
       }
     };
     this._validator = new Validator();
@@ -21,52 +26,64 @@ class App extends Component {
 
   handleFormInputChanges(event) {
     const {name,value,type,checked} = event.target;
-    
-    // TODO: add password generic validation here for password
-    // TODO: display alert in case validation failed 
+    const objectToValidate = {
+      name: name,
+      value: value,
+      type: type,
+      matched: name === 'confirmPassword'? this.state.formInfo.password : ''
+    }
 
+    const valResult = this._validator.onScreenValidations(objectToValidate);
+    
     this.setState({
       formInfo: {
         ...this.state.formInfo,
-        [name]: type === 'checkbox' ? checked : value}
+        [name]: type === 'checkbox' ? checked : value},
+      formValidationInfo: {
+        ...this.state.formValidationInfo,
+        [name]: {
+          result: valResult.result,
+          errorMessage: valResult.errorMessage 
+        }
+      }
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-
-    // Validation
-    const {password, confirmPassword} = this.state.formInfo; 
-    const result = this._validator.validatePassword(password, confirmPassword);
-    
     console.log(this.state.formInfo);
-    console.log(result);
+    console.log(this.state.formValidationInfo);
   }
 
   render (){
     const formInputs = 
     [
         {
+          key:'01',
           type:'text',
           placeholder:'Username',
           name:'userName'
         },
         {
+          key:'02',
           type:'text',
           placeholder:'Email',
           name:'email'
         },
         {
+          key:'03',
           type:'password',
           placeholder:'Password',
           name:'password'
         },
         {
+          key:'04',
           type:'password',
           placeholder:'Confirm Password',
           name:'confirmPassword'
         },
         {
+          key:'05',
           type:'checkbox',
           label:'Sign up to our newsletter!',
           name:'newsletterFlag',

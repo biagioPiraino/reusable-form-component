@@ -12,11 +12,10 @@ class Form extends Component {
       x => {
         if (x.type === 'checkbox') {
           return (
-            <React.Fragment>
+            <React.Fragment key={x.key}>
               <section className='form--checkbox'>
                 <input
-                  id={x.id}
-                  key={x.name}
+                  id={x.key}
                   type={x.type}
                   name={x.name}
                   onChange={this.props.onInputChange}
@@ -29,9 +28,9 @@ class Form extends Component {
         } 
         else {
           return (
-          <React.Fragment>
+          <React.Fragment key={x.key}>
             <input
-              key={x.name}
+              id={x.key}
               className='form--input'
               type={x.type}
               name={x.name}
