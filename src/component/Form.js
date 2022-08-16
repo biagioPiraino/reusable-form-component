@@ -36,6 +36,7 @@ class Form extends Component {
               name={x.name}
               placeholder={x.placeholder}
               onChange={this.props.onInputChange}
+              value={this.props.value}
             />
           </React.Fragment>
           )       

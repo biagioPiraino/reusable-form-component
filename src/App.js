@@ -35,6 +35,7 @@ class App extends Component {
 
     const valResult = this._validator.onScreenValidations(objectToValidate);
     
+    
     this.setState({
       formInfo: {
         ...this.state.formInfo,
@@ -47,6 +48,8 @@ class App extends Component {
         }
       }
     });
+
+    console.log(this.state.formValidationInfo);
   }
 
   handleSubmit(event) {
@@ -62,25 +65,29 @@ class App extends Component {
           key:'01',
           type:'text',
           placeholder:'Username',
-          name:'userName'
+          name:'userName',
+          value:this.state.formInfo.userName
         },
         {
           key:'02',
           type:'text',
           placeholder:'Email',
-          name:'email'
+          name:'email',
+          value:this.state.formInfo.userName
         },
         {
           key:'03',
           type:'password',
           placeholder:'Password',
-          name:'password'
+          name:'password',
+          value:this.state.formInfo.password
         },
         {
           key:'04',
           type:'password',
           placeholder:'Confirm Password',
-          name:'confirmPassword'
+          name:'confirmPassword',
+          value:this.state.formInfo.confirmPassword
         },
         {
           key:'05',
